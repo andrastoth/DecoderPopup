@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+<div class="w3-row w3-padding w3-xlarge w3-blue">
+  <div class="w3-quarter">
+    <div class="w3-bar">
+      <a href="https://atandrastoth.co.uk/main/pages/plugins" class="w3-bar-item w3-button"><i class="material-icons" style="line-height: 1.6;">arrow_back</i></a>
+    </div>
+  </div>
+
+  <div class="w3-half">
+    <h3 class="w3-center">DecoderPopup.js helper for WebCodeCamJS</h3>
+  </div>
+
+  <div class="w3-quarter">
+    
+  </div>
+</div>
+<br>
+    <div class="w3-container">
+		<ul class="w3-ul w3-small">
+		  <li class="w3-blue">Features</li>
+		  <li>easy configuration and usage</li>
+		  <li>if there have more cameras, selector will appears</li>
+		  <li>zoom and selected camera will be saved to cookie</li>
+		  <li>movable viewfinder</li>
+		</ul>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4>Initialization - html</h4>
+            <div class="w3-code htmlHigh notranslate">
+&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;js/qrcodelib.js&#x22;&#x3E;&#x3C;/script&#x3E;<br>
+&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;js/webcodecamjs.js&#x22;&#x3E;&#x3C;/script&#x3E;<br>
+&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;js/decoderpopup.js&#x22;&#x3E;&#x3C;/script&#x3E;<br>
+            </div>
+        </div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4>Initialization - javascript</h4>
+            <div class="w3-code jsHigh notranslate">
+var handler = function(popup, decoder, index) {<br>
+&nbsp;&nbsp;switch (index) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.decodeQRCodeRate = 5;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.decodeBarCodeRate = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.resultFunction = function(result) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.querySelector('#text-box-1').value = result.code;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.querySelector('#text-box-2').focus();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.decodeQRCodeRate = 5;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.decodeBarCodeRate = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.resultFunction = function(result) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.pause();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popup.classList.add("hidden");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.querySelector('#text-box-2').value = result.code;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.decodeQRCodeRate = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.decodeBarCodeRate = 5;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.resultFunction = function(result) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.pause();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popup.classList.add("hidden");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.querySelector('#text-box-3').value = result.code;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 3:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.decodeQRCodeRate = 5;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.decodeBarCodeRate = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.resultFunction = function(result) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isValidURL(result.code)){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.pause();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popup.classList.add("hidden");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.open(result.code);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 4:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// And so on ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decoder.options.resultFunction = function(result) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(result);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;}<br>
+}<br>
+var popup = new DecoderPopup(handler);<br>
+popup.init(/** optional -> see WebCodeCamJS documentation */ args);<br>
+          </div>
+        </div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4>On focus scan QR code - focus next</h4>
+            <div class="w3-code htmlHigh notranslate">
+&#x3C;input id=&#x22;text-box-1&#x22; class=&#x22;w3-input w3-border&#x22; type=&#x22;text&#x22; onfocus=&#x22;popup.open(event, 0);&#x22;&#x3E;&#x3C;/p&#x3E;
+            </div>
+            <p>
+                <input id="text-box-1" class="w3-input w3-border" type="text" onfocus="popup.open(event, 0);"></p>
+            <p>
+        </div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4>On focus scan QR code</h4>
+            <div class="w3-code htmlHigh notranslate">
+&#x3C;input id=&#x22;text-box-2&#x22; class=&#x22;w3-input w3-border&#x22; type=&#x22;text&#x22; onfocus=&#x22;popup.open(event, 1);&#x22;&#x3E;&#x3C;/p&#x3E;
+            </div>
+            <p>
+                <input id="text-box-2" class="w3-input w3-border" type="text" onfocus="popup.open(event, 1);"></p>
+            <p>
+        </div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4>On focus scan Barcode</h4>
+            <div class="w3-code htmlHigh notranslate">
+&#x3C;input id=&#x22;text-box-3&#x22; class=&#x22;w3-input w3-border&#x22; type=&#x22;text&#x22; onfocus=&#x22;popup.open(event, 2);&#x22;&#x3E;&#x3C;/p&#x3E;
+            </div>
+            <p>
+                <input id="text-box-3" class="w3-input w3-border" type="text" onfocus="popup.open(event, 2);"></p>
+            <p>
+        </div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4>Jump to URL (QR code)</h4>
+            <div class="w3-code htmlHigh notranslate">
+&#x3C;button id=&#x22;read-qr&#x22; class=&#x22;w3-btn w3-blue&#x22; onclick=&#x22;popup.open(event, 3);&#x22;&#x3E;Jump to URL (QR code)&#x3C;/button&#x3E;
+            </div>
+            <p>
+                <button id="read-qr" class="w3-btn w3-blue" onclick="popup.open(event, 3);">Jump to URL (QR code)</button>
+                <p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/qrcodelib.js"></script>
+    <script type="text/javascript" src="js/webcodecamjs.js"></script>
+    <script type="text/javascript" src="js/decoderpopup.js"></script>
+    <script src="https://www.w3schools.com/lib/w3codecolor.js"></script>
+    <script type="text/javascript">
+        w3CodeColor();
+
+      function isValidURL(str) {
+          var urlregex = /^(http|https):\/\/(([a-zA-Z0-9$\-_.+!*'(),;:&=]|%[0-9a-fA-F]{2})+@)?(((25[0-5]|2[0-4][0-9]|[0-1][0-9][0-9]|[1-9][0-9]|[0-9])(\.(25[0-5]|2[0-4][0-9]|[0-1][0-9][0-9]|[1-9][0-9]|[0-9])){3})|localhost|([a-zA-Z0-9\-\u00C0-\u017F]+\.)+([a-zA-Z]{2,}))(:[0-9]+)?(\/(([a-zA-Z0-9$\-_.+!*'(),;:@&=]|%[0-9a-fA-F]{2})*(\/([a-zA-Z0-9$\-_.+!*'(),;:@&=]|%[0-9a-fA-F]{2})*)*)?(\?([a-zA-Z0-9$\-_.+!*'(),;:@&=\/?]|%[0-9a-fA-F]{2})*)?(\#([a-zA-Z0-9$\-_.+!*'(),;:@&=\/?]|%[0-9a-fA-F]{2})*)?)?$/;
+          return urlregex.test(str.toLocaleLowerCase().split("?")[0]);
+      }
+        var handler = function(popup, decoder, index) {
+            switch (index) {
+                case 0:
+                    decoder.options.decodeQRCodeRate = 5;
+                    decoder.options.decodeBarCodeRate = false;
+                    decoder.options.resultFunction = function(result) {
+                        document.querySelector('#text-box-1').value = result.code;
+                        document.querySelector('#text-box-2').focus();
+                    };
+                    break;
+                case 1:
+                    decoder.options.decodeQRCodeRate = 5;
+                    decoder.options.decodeBarCodeRate = false;
+                    decoder.options.resultFunction = function(result) {
+                        decoder.pause();
+                        popup.classList.add("hidden");
+                        document.querySelector('#text-box-2').value = result.code;
+                    }
+                    break;
+                case 2:
+                    decoder.options.decodeQRCodeRate = false;
+                    decoder.options.decodeBarCodeRate = 5;
+                    decoder.options.resultFunction = function(result) {
+                        decoder.pause();
+                        popup.classList.add("hidden");
+                        document.querySelector('#text-box-3').value = result.code;
+                    }
+                    break;
+                case 3:
+                    decoder.options.decodeQRCodeRate = 5;
+                    decoder.options.decodeBarCodeRate = false;
+                    decoder.options.resultFunction = function(result) {
+                        if(isValidURL(result.code)){
+                            decoder.pause();
+                            popup.classList.add("hidden");
+                            window.open(result.code);
+                        }
+                    }
+                    break;
+                case 4:
+                    // And so on ...
+                    break;
+                default:
+                    decoder.options.decodeQRCodeRate = 5;
+                    decoder.options.decodeBarCodeRate = false;
+                     decoder.options.resultFunction = function(result) {
+                        console.log(result);
+                    }
+                    break;
+            }
+        }
+        var popup = new DecoderPopup(handler);
+        popup.init();
+    </script>
+
+</body>
+
+</html>
