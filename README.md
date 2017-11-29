@@ -12,7 +12,9 @@ Helper Popup for WebCodeCamJS<br>
 
 Add missing files from WebCodeCamJS repository
 ----
-	- Download [WebCodeCamJS]
+
+Download [WebCodeCamJS]<br>
+
 	- Copy webcodecamjs/audio folder to DecoderPopup/
 	- Copy webcodecamjs/js/webcodecamjs.js javascript file to DecoderPopup/js/
 	- Copy webcodecamjs/js/qrcodelib.js javascript file to DecoderPopup/js/
