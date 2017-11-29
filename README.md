@@ -10,12 +10,20 @@ Helper Popup for WebCodeCamJS<br>
 	- zoom and selected camera will be saved to cookie
 	- movable viewfinder
 
+Add missing files from WebCodeCamJS repository
+----
+	- Download [WebCodeCamJS]
+	- Copy webcodecamjs/audio folder to DecoderPopup/
+	- Copy webcodecamjs/js/webcodecamjs.js javascript file to DecoderPopup/js/
+	- Copy webcodecamjs/js/qrcodelib.js javascript file to DecoderPopup/js/
+	- Copy webcodecamjs/js/DecoderWorker.js javascript file to DecoderPopup/js/
+
 Version
 ----
 
 1.0.0
 
-* [Homepage] - Home page, demonstration
+[Homepage] - Homepage, examples
 
 License
 ----
@@ -29,3 +37,4 @@ http://atandrastoth.co.uk/
 2017-11-29
 
 [Homepage]:https://atandrastoth.co.uk/main/pages/plugins/decoderPopup/
+[WebCodeCamJS]:https://github.com/andrastoth/webcodecamjs
