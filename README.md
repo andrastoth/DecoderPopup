@@ -3,7 +3,7 @@ DecoderPopup
 
 Helper Popup for WebCodeCamJS<br>
 
-<img src = "css/icon.png">
+<img src = "icon.PNG">
 
 	- easy configuration and usage
 	- if there have more cameras, selector will appears
@@ -26,6 +26,6 @@ Author: Tóth András
 ---
 http://atandrastoth.co.uk/
 
-2015-06-10
+2017-11-29
 
 [Homepage]:https://atandrastoth.co.uk/main/pages/plugins/decoderPopup/
