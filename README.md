@@ -13,7 +13,7 @@ Helper Popup for WebCodeCamJS<br>
 Add missing files from WebCodeCamJS repository
 ----
 
-Download [WebCodeCamJS]<br>
+Download [WebCodeCamJS Link1] or [WebCodeCamJS Link2]<br>
 
 	- Copy webcodecamjs/audio folder to DecoderPopup/
 	- Copy webcodecamjs/js/webcodecamjs.js javascript file to DecoderPopup/js/
@@ -39,4 +39,5 @@ http://atandrastoth.co.uk/
 2017-11-29
 
 [Homepage]:https://atandrastoth.co.uk/main/pages/plugins/decoderPopup/
-[WebCodeCamJS]:https://github.com/andrastoth/webcodecamjs
+[WebCodeCamJS Link1]:https://github.com/andrastoth/webcodecamjs
+[WebCodeCamJS Link2]:https://www.jsclasses.org/package/446-JavaScript-Scan-barcodes-and-qrcodes-with-a-Webcam.html
