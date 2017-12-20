@@ -3,7 +3,7 @@ DecoderPopup
 
 Helper Popup for WebCodeCamJS<br>
 
-<img src="icon.png" width="100%"/>
+![N|Icon](https://atandrastoth.co.uk/main/pages/plugins/decoderPopup/icon.png)
 
 	- easy configuration and usage
 	- if there have more cameras, selector will appears
